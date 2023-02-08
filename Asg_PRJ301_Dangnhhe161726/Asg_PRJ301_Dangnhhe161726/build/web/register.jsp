@@ -28,7 +28,7 @@
                 background-color: red;
                 margin: 0 auto;
                 margin-bottom: 50px;
-                color: blue;
+                color: black;
                 border-radius: 10px;
                 padding: 20px 20px;
                 }
@@ -58,41 +58,41 @@
             <tbody>
                   <form action="Register" method="post" id="registerform">
                 <tr>
-                    <td>Ho va ten  (*)</td>
+                    <td>Họ và tên   </td>
                     <td><input type="text" name="fullname"></td>
                 </tr>
                 <tr>
-                    <td>Ten dang nhap (*)</td>
+                    <td>Tên đăng nhập    </td>
                     <td><input type="text" name="uname"></td>
                 </tr>
                 <tr>
-                    <td>Mat Khau(*)</td>
+                    <td>Mật khẩu </td>
                     <td><input type="password" name="pass" id="pass"></td>
                 </tr>
                 <tr>
-                    <td>Xac nhan mat khau</td>
+                    <td>Xác nhận mật khẩu   </td>
                     <td><input type="password" name="cfpass" id="cfpass"></td>
                 </tr>
                 <tr>
-                    <td>Gioi Tinh</td>
-                    <td><input type="radio" checked name="gender" value="Nam" name="">Nam<input type="radio"  value="Nu" name="gender">Nu</td>
+                    <td>Giới tính</td>
+                    <td><input type="radio" checked name="gender" value="Nam" name="">Nam<input type="radio"  value="Nu" name="gender">Nữ</td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td><input type="email" name="email"></td>
                 </tr>
                 <tr>
-                    <td>Dia chi</td>
+                    <td>Địa chỉ</td>
                     <td><textarea  name="address" ></textarea></td>
                 </tr>
                 <tr>
-                    <td>Thong tin dieu khoan</td>
-                    <td><input type="checkbox" name="agr" value="toi chap nhan">Toi chap nhan dieu khoang</td>
+                    <td>Thông tin điều khoản</td>
+                    <td><input type="checkbox" name="agr" value="toi chap nhan">Tôi chấp nhận điều khoản</td>
                 </tr>
                     </form>
                 <tr>
                     <td></td>
-                    <td><button onclick="validate()">dang ky</button> <button type="reset">huy</button></td>
+                    <td><button onclick="validate()">Đăng ký</button> <button type="reset">Huỷ</button></td>
                 </tr>
                 <tr>
                     <td></td>
