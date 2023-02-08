@@ -98,7 +98,7 @@ request.setAttribute("email", email);
 request.setAttribute("address", address);
 request.setAttribute("agr", agr);
 request.setAttribute("mess", mess);
-request.getRequestDispatcher("register.jsp").forward(request, response);
+request.getRequestDispatcher("data.jsp").forward(request, response);
 
 
 

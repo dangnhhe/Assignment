@@ -12,7 +12,8 @@
         <title>JSP Page</title>
         <style>
             body{
-                background-image: url("https://phunugioi.com/wp-content/uploads/2020/02/mau-background-dep.jpg")
+                background-image: url("https://phunugioi.com/wp-content/uploads/2020/02/mau-background-dep.jpg");
+                
             }
             h1{
               color: blue; 
@@ -25,9 +26,11 @@
             table{
                 padding-left: auto;
                 background-color: red;
-                }
-            tbody{
-                text-align: center;
+                margin: 0 auto;
+                margin-bottom: 50px;
+                color: blue;
+                border-radius: 10px;
+                padding: 20px 20px;
                 }
         </style>
         <script>
@@ -100,14 +103,5 @@
 
         </form>
         <h1>Cảm ơn quý khách</h1>
-        <p style="color: red;">${mess}</p>
-        <p>${fullname}</p>
-        <p>${uname}</p>
-          <p>${pass}</p>
-               <p>${cfpass}</p>
-               <p>${gender}</p>
-               <p>${email}</p><!-- comment --><!--        <p></p> --><!--        <p></p> -->
-                      <p>${address}</p>
-                             <p>${agr}</p>
     </body>
 </html>
