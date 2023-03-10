@@ -12,51 +12,45 @@
         <title>JSP Page</title>
         <style>
             body{
-                background-image: url("https://phunugioi.com/wp-content/uploads/2020/02/mau-background-dep.jpg");
-                
+                background-image: url("image/Eor57Ae.jpg");
+
             }
             h1{
-              color: blue; 
-              text-transform: uppercase;
-              text-align: center;
-              font-family: arial;
-              background-size: cover;
-              height: 100px;
+                color: white;
+                text-transform: uppercase;
+                text-align: center;
+                font-family: arial;
+                background-size: cover;
+                height: 100px;
             }
             table{
                 padding-left: auto;
-                background-color: red;
+                background-color: #ff7b81;
                 margin: 0 auto;
                 margin-bottom: 50px;
                 color: black;
                 border-radius: 10px;
                 padding: 20px 20px;
-                }
+            }
         </style>
         <script>
-            function validate(){
-                var pass=document.getElementById("pass").value
-                  var cfpass=document.getElementById("cfpass").value
-                  if(pass==cfpass){
-                   document.getElementById("registerform").submit();
-                  }else{
-                      alert("mat khau khong khop");
-                      }
-            }      
+            function validate() {
+                var pass = document.getElementById("pass").value
+                var cfpass = document.getElementById("cfpass").value
+                if (pass == cfpass) {
+                    document.getElementById("registerform").submit();
+                } else {
+                    alert("mat khau khong khop");
+                }
+            }
         </script>
     </head>
     <body>
-        <h1>Tạo tài khoản</h1>
-       
+        <h1>Create account</h1>
+
         <table >
-<!--            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>-->
             <tbody>
-                  <form action="Register" method="post" id="registerform">
+            <form action="Register" method="post" id="registerform">
                 <tr>
                     <td>Họ và tên   </td>
                     <td><input type="text" name="fullname"></td>
@@ -89,19 +83,18 @@
                     <td>Thông tin điều khoản</td>
                     <td><input type="checkbox" name="agr" value="toi chap nhan">Tôi chấp nhận điều khoản</td>
                 </tr>
-                    </form>
-                <tr>
-                    <td></td>
-                    <td><button onclick="validate()">Đăng ký</button> <button type="reset">Huỷ</button></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+            </form>
+            <tr>
+                <td></td>
+                <td><button onclick="validate()">Đăng ký</button> <button type="reset">Huỷ</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
 
-        </form>
-        <h1>Cảm ơn quý khách</h1>
-    </body>
+</form>
+</body>
 </html>
