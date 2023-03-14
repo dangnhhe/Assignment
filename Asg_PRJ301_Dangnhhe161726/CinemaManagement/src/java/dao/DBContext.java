@@ -1,32 +1,32 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author ADMIN
- */
 public class DBContext {
-    public Connection connection;
-    public DBContext()
-    {
+
+    protected Connection connection;
+
+    public DBContext() {
         try {
-            //Change the username password and url to connect your own database
-            String username = "sa";
-            String password = "1234";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=CinemaManagement";
+            String user = "sa";
+            String pass = "1234";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=Cinema";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(url, username, password);
-        } catch (ClassNotFoundException | SQLException ex) {
+            connection = DriverManager.getConnection(url, user, pass);
+        } catch (Exception ex) {
             Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("hihi");
     }
 }

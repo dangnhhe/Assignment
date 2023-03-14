@@ -3,23 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package managercontroller;
 
-import dao.UserDAO;
+import dao.ManagerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.User;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "ManageUser", urlPatterns = {"/ManageUser"})
+public class ManageUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +35,10 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        ManagerDAO mdao = new ManagerDAO();
+        ArrayList<User> userl = mdao.getAllUser();
+        request.setAttribute("userl", userl);
+        request.getRequestDispatcher("./manager/manageuser.jsp").forward(request, response);
 
     }
 
@@ -63,37 +68,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            PrintWriter out = response.getWriter();
-            UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
-
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
-
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
-
-            } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
-            }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**

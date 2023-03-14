@@ -18,8 +18,8 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "Verify", urlPatterns = {"/verify"})
+public class Verify extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +33,32 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        try {
+            UserDAO dao = new UserDAO();
+            String action = request.getParameter("action");
+            String email = request.getParameter("email");
+            String key = request.getParameter("key");
 
+            if (action.equals("register")) {
+                if (dao.checkEmailAndKey(email, key)) {
+                    dao.activeAccount(email);
+                    request.setAttribute("msg", "Register Success. Please login!");
+                } else {
+                    request.setAttribute("msg", "Invalid verification code!");
+                }
+                request.setAttribute("activeLogin", "style='display: flex;'");
+                request.getRequestDispatcher("home.jsp").forward(request, response);
+            } else {
+                if (dao.checkEmailAndKey(email, key)) {
+                    request.setAttribute("email", email);
+                    request.getRequestDispatcher("resetpassword.jsp").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("404.jsp").forward(request, response);
+                }
+            }
+
+        } catch (Exception e) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -63,37 +87,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            PrintWriter out = response.getWriter();
-            UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
-
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
-
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
-
-            } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
-            }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
+        processRequest(request, response);
     }
 
     /**

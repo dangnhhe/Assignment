@@ -3,23 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package managercontroller;
 
-import dao.UserDAO;
+import dao.FilmDAO;
+import dao.ManagerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Films;
+import model.Room;
+import model.Show;
+import model.Slot;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "EditShow", urlPatterns = {"/EditShow"})
+public class EditShow extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +39,18 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        ManagerDAO dao = new ManagerDAO();
+        FilmDAO fdao = new FilmDAO();
+        String sid = request.getParameter("sid");
+        Show show = fdao.getShow(sid);
+        ArrayList<Room> rlist = dao.getAllRoom();
+        ArrayList<Slot> slist = dao.getAllSlot();
+        ArrayList<Films> flist = dao.getAllFilmAndId();
+        request.setAttribute("rlist", rlist);
+        request.setAttribute("slist", slist);
+        request.setAttribute("flist", flist);
+        request.setAttribute("sh", show);
+        request.getRequestDispatcher("./manager/editshow.jsp").forward(request, response);
 
     }
 
@@ -63,37 +80,17 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            PrintWriter out = response.getWriter();
-            UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
+        String sid = request.getParameter("sid");
+        String room = request.getParameter("room");
+        String slot = request.getParameter("slot");
+        String fid = request.getParameter("fid");
+        String showdate = request.getParameter("showdate");
+        String Price = request.getParameter("Price");
+        String status = request.getParameter("status");
+        ManagerDAO dao = new ManagerDAO();
+        dao.editShow(room, fid, showdate, Price, status, slot, sid);
+        response.sendRedirect("ManageShow");
 
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
-
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
-
-            } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
-            }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        } catch (Exception e) {
-        }
     }
 
     /**

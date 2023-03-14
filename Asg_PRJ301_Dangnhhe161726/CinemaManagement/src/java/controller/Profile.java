@@ -13,13 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "Profile", urlPatterns = {"/profile"})
+public class Profile extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +35,7 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        request.getRequestDispatcher("profile.jsp").forward(request, response);
 
     }
 
@@ -63,37 +65,39 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserDAO dao = new UserDAO();
+        HttpSession session = request.getSession();
+        String email = ((User) session.getAttribute("account")).getEmail();
+        String fullnamepf = request.getParameter("fullnamepf");
+        int gender = 0;
         try {
-            PrintWriter out = response.getWriter();
-            UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
-
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
-
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
-
-            } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
-            }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
+            gender = Integer.valueOf(request.getParameter("gender"));
         } catch (Exception e) {
         }
+
+        String phonepf = request.getParameter("phonepf");
+        String addresspf = request.getParameter("addresspf");
+        String myAvatar = request.getParameter("Avatar");
+
+        System.out.println("" + email);
+        System.out.println("fullnamepf: " + fullnamepf);
+        System.out.println("gender: " + gender);
+        System.out.println("phonepf: " + phonepf);
+        System.out.println("addresspf: " + addresspf);
+        System.out.println("myAvatar: " + myAvatar);
+        if (fullnamepf.equals("") || phonepf.equals("") || addresspf.equals("")) {
+//            response.getWriter().println("Please do not enter empty!");
+            request.setAttribute("msg", "Please do not enter empty!");
+
+        } else {
+            dao.updateProfile(fullnamepf, gender, phonepf, addresspf, myAvatar, email);
+            session.setAttribute("account", dao.getUserByEmail(email));
+//            response.getWriter().println("Change profile successfully!");
+            request.setAttribute("msg", "Change profile successfully!");
+
+        }
+        request.setAttribute("msg", "Email or password not correct!");
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     /**

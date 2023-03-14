@@ -6,6 +6,7 @@
 package controller;
 
 import dao.UserDAO;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,13 +14,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,8 +35,7 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
-
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -64,34 +65,17 @@ public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            PrintWriter out = response.getWriter();
             UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
-
+            HttpSession session = request.getSession();
             String email = request.getParameter("email");
             String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
-
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
-
+            if (dao.checkLogin(email, password)) {
+                session.setAttribute("account", dao.getUserByEmail(email));
+                response.sendRedirect("Home");
             } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
+                request.setAttribute("msg", "Email or password not correct!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
         } catch (Exception e) {
         }
     }

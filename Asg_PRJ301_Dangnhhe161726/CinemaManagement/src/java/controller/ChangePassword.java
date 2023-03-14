@@ -13,13 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/Register"})
-public class Register extends HttpServlet {
+@WebServlet(name = "ChangePassword", urlPatterns = {"/changepassword"})
+public class ChangePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,7 +35,7 @@ public class Register extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("register.jsp").forward(request, response);
+        request.getRequestDispatcher("changepassword.jsp").forward(request, response);
 
     }
 
@@ -63,37 +65,30 @@ public class Register extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            PrintWriter out = response.getWriter();
-            UserDAO dao = new UserDAO();
-            int gender = 0;
-            String fullname = request.getParameter("fullname");
-            String phone = request.getParameter("phone");
-            String address = request.getParameter("address");
-            try {
-                gender = Integer.valueOf(request.getParameter("gender"));
-            } catch (Exception e) {
-            }
+        UserDAO dao = new UserDAO();
+        HttpSession session = request.getSession();
+        String email = ((User) session.getAttribute("account")).getEmail();
+        String oldpassword = request.getParameter("oldPassword");
+        String newpassword = request.getParameter("password");
+        String confirmpassword = request.getParameter("rePassword");
 
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            String repassword = request.getParameter("repassword");
-            if (dao.checkEmail(email)) {
-//                out.println("Email already exists!");
-                request.setAttribute("msg", "Email already exists!");
+        if (oldpassword.equals("") || newpassword.equals("") || confirmpassword.equals("")) {
+            response.getWriter().println("Please do not enter empty!");
+        } else if (dao.checkLogin(email, oldpassword) == false) {
+//            response.getWriter().println("Old password not correct, please re-enter!");
+            request.setAttribute("msg", "Old password not correct, please re-enter!");
 
-            } else if (!password.equals(repassword)) {
-//                out.println("Please enter 2 equal passwords!");
-                request.setAttribute("msg", "Please enter 2 equal passwords!");
+        } else if (!newpassword.equals(confirmpassword)) {
+//            response.getWriter().println("Please enter 2 identical passwords!");
+            request.setAttribute("msg", "Please enter 2 identical passwords!");
 
-            } else {
-                dao.insertUser(fullname, phone, address, email, password, gender);
-//                out.println("Check your email and verify!");
-                request.setAttribute("msg", "Check your email and verify!");
-            }
-            request.getRequestDispatcher("register.jsp").forward(request, response);
-        } catch (Exception e) {
+        } else {
+            dao.updatePassword(email, newpassword);
+//            response.getWriter().println("Change password successfully!");
+            request.setAttribute("msg", "Change password successfully!");
+
         }
+        request.getRequestDispatcher("changepassword.jsp").forward(request, response);
     }
 
     /**
