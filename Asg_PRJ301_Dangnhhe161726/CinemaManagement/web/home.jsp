@@ -46,7 +46,7 @@
                 <c:forEach var="f" items="${flist}">
                     <div class="col-md-4" style="display: flex; justify-content: center">
                         <a href="Detail?fid=${f.getFilmID()}" style="text-decoration: none; color: black;">
-                            <img src="${f.getImg()}">
+                            <img style="height: 260px; width:150px;" src="${f.getImg()}">
                             <div style="width: 176px;">
                                 <h5>${f.getTitle()}</h5>
                                 <p><b>Category:</b>${f.getGenre().name}<br>

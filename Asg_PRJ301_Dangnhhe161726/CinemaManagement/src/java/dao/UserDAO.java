@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.Random;
 import model.User;
 import service.MD5;
-import service.SendMail;
+
 
 /**
  *
@@ -33,7 +33,7 @@ public class UserDAO extends DBContext {
 
     public boolean checkLogin(String email, String password) {
         try {
-            PreparedStatement ps = connection.prepareStatement("SELECT * FROM [User] WHERE email = ? AND password = ? and active = 1");
+            PreparedStatement ps = connection.prepareStatement("SELECT * FROM [User] WHERE email = ? AND password = ? ");
             ps.setString(1, email);
             ps.setString(2, MD5.getMd5(password));
             ResultSet rs = ps.executeQuery();
@@ -70,7 +70,7 @@ public class UserDAO extends DBContext {
             ps.setInt(8, 0);
             ps.setString(9, randomKey);
             ps.setString(10, "https://iconape.com/wp-content/files/im/10836/svg/iconfinder_3_avatar_2754579.svg");
-            SendMail.send(email, "Verify SignUp", messageRegister(fullname, phone, address, email, randomKey));
+ 
             ps.executeUpdate();
         } catch (Exception e) {
         }
@@ -212,7 +212,6 @@ public class UserDAO extends DBContext {
                     + " WHERE email = ?");
             ps.setString(1, randomKey);
             ps.setString(2, email);
-            SendMail.send(email, "Verify reset password Shoplazaki.vn", messageResetPass(email, randomKey));
             ps.executeUpdate();
         } catch (Exception e) {
         }

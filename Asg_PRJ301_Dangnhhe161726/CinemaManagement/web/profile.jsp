@@ -124,7 +124,8 @@
         </div>
         <jsp:include page="./layout/footer.jsp"/>
         <script>
-//                                    ChangeAvatar
+
+//ChangeAvatar
             function changeAvatar() {
                 var file = document.getElementById("fileAvatar").files[0];
                 if (file.name.match(/.+\.(jpg|png|jpeg)/i)) {
@@ -145,7 +146,7 @@
 
             function uploadError() {
                 alert('Please upload photo file < 5MB')
-                document.getElementById("fileAvatar").files[0].value = ''
+                document.getElementById("fileAvatar").files[0].value = '';
                 document.getElementById("fileAvatar").type = '';
                 document.getElementById("fileAvatar").type = 'file';
             }

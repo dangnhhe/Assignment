@@ -47,9 +47,7 @@
                             <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
-                        <div class="auth-form__forgotgroup">
-                            <a href="forgotpassword" class="auth-form__forgot">Forgot password</a>
-                        </div>
+
                         <div class="checkbox mb-3">
                             <p style="color: red;">${msg}</p>
                         </div>

@@ -97,7 +97,7 @@ public class Profile extends HttpServlet {
 
         }
         request.setAttribute("msg", "Email or password not correct!");
-        request.getRequestDispatcher("login.jsp").forward(request, response);
+        request.getRequestDispatcher("Home").forward(request, response);
     }
 
     /**

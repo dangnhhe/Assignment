@@ -139,15 +139,17 @@ public class ManagerDAO extends DBContext {
         }
     }
 
-    public void addFilm(String genre, String title, String year, String country, String img, String trailer) {
-        String sql = "insert into Films ([GenreID] ,[Title] ,[Year] ,[CountryCode] ,[img] ,[trailer]) values(?,?,?,?,?,?)";
+    public void addFilm(String genre, String title, String year, String country, String linkImg, String linkTrailer) {
+        String trailer = "<iframe width=" + 800 + " height=" + 450 + " src=" + linkTrailer + " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
+
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
+            PreparedStatement ps = connection.prepareStatement("insert into Films ([GenreID] ,[Title] ,[Year] ,[CountryCode] ,[img] ,[trailer]) values(?,?,?,?,?,?)");
+
             ps.setString(1, genre);
             ps.setString(2, title);
             ps.setString(3, year);
             ps.setString(4, country);
-            ps.setString(5, img);
+            ps.setString(5, linkImg);
             ps.setString(6, trailer);
             ps.executeUpdate();
         } catch (Exception e) {
@@ -213,6 +215,7 @@ public class ManagerDAO extends DBContext {
         }
         return list;
     }
+
     public ArrayList<Slot> getAllSlot() {
         ArrayList<Slot> list = new ArrayList<>();
         try {
@@ -226,6 +229,7 @@ public class ManagerDAO extends DBContext {
         }
         return list;
     }
+
     public ArrayList<Films> getAllFilmAndId() {
         ArrayList<Films> list = new ArrayList<>();
         try {
@@ -241,6 +245,7 @@ public class ManagerDAO extends DBContext {
         }
         return list;
     }
+
     public static void main(String[] args) {
         ManagerDAO aO = new ManagerDAO();
         System.out.println(aO.getAllFilmAndId());
