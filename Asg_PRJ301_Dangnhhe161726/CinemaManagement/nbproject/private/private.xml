@@ -3,30 +3,43 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Home.java</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/newjsp.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/filmList.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/model/User.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Detail.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Register.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/layout/footer.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/model/Show.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/DeleteBooking.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/layout/header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/dao/UserDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/profile.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/home.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/booksucces.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/managefilm.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/manageshow.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Home.java</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/register.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/changepassword.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/login.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/ChangePassword.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/filmList.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/FilmList.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/META-INF/context.xml</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Register.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/ApplicationConfig.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/manageuser.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/dao/ManagerDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/GenericResource.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/layout/header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/dao/FilmDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Profile.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/dao/UserDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/profile.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/mytickets.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/dashboard.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/header.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/MyTickets.java</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Login.java</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/home.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/booksucces.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/Booking.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/editfilm.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/dao/DBContext.java</file>
             <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/src/java/controller/resetpassword.java</file>
+            <file>file:/C:/Users/Admin/Desktop/PRJ301/ASS2023/Assignment/Asg_PRJ301_Dangnhhe161726/CinemaManagement/web/manager/addfilm.jsp</file>
         </group>
     </open-files>
 </project-private>

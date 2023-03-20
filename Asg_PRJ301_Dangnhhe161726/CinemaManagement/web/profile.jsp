@@ -60,7 +60,7 @@
                                     <div class="col-lg-12">
                                         <div class="profile-pic">
 
-                                            <img id="myAvatar" style="border-radius: 15px;" src="${account.avatar}" width="120" >
+                                            <img id="myAvatar" style="border-radius: 15px; margin-right: 20px" src="${account.avatar}" width="120" >
 
                                             <input id="fileAvatar" onchange="changeAvatar()" name="myAvatar" type="file" accept=".jpg, .jpeg, .png">
                                             <input name="Avatar" id="sendavt" type="hidden">

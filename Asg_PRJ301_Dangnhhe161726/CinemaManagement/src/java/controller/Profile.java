@@ -65,38 +65,39 @@ public class Profile extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        UserDAO dao = new UserDAO();
-        HttpSession session = request.getSession();
-        String email = ((User) session.getAttribute("account")).getEmail();
-        String fullnamepf = request.getParameter("fullnamepf");
-        int gender = 0;
+
         try {
+            UserDAO dao = new UserDAO();
+            HttpSession session = request.getSession();
+            String email = ((User) session.getAttribute("account")).getEmail();
+            String fullnamepf = request.getParameter("fullnamepf");
+            int gender = 0;
             gender = Integer.valueOf(request.getParameter("gender"));
+            String phonepf = request.getParameter("phonepf");
+            String addresspf = request.getParameter("addresspf");
+            String myAvatar = request.getParameter("Avatar");
+
+            System.out.println("" + email);
+            System.out.println("fullnamepf: " + fullnamepf);
+            System.out.println("gender: " + gender);
+            System.out.println("phonepf: " + phonepf);
+            System.out.println("addresspf: " + addresspf);
+            System.out.println("myAvatar: " + myAvatar);
+            if (fullnamepf.equals("") || phonepf.equals("") || addresspf.equals("")) {
+//            response.getWriter().println("Please do not enter empty!");
+                request.setAttribute("msg", "Please do not enter empty!");
+
+            } else {
+                dao.updateProfile(fullnamepf, gender, phonepf, addresspf, myAvatar, email);
+                session.setAttribute("account", dao.getUserByEmail(email));
+//            response.getWriter().println("Change profile successfully!");
+                request.setAttribute("msg", "Change profile successfully!");
+
+            }
+            request.setAttribute("msg", "Email or password not correct!");
         } catch (Exception e) {
         }
 
-        String phonepf = request.getParameter("phonepf");
-        String addresspf = request.getParameter("addresspf");
-        String myAvatar = request.getParameter("Avatar");
-
-        System.out.println("" + email);
-        System.out.println("fullnamepf: " + fullnamepf);
-        System.out.println("gender: " + gender);
-        System.out.println("phonepf: " + phonepf);
-        System.out.println("addresspf: " + addresspf);
-        System.out.println("myAvatar: " + myAvatar);
-        if (fullnamepf.equals("") || phonepf.equals("") || addresspf.equals("")) {
-//            response.getWriter().println("Please do not enter empty!");
-            request.setAttribute("msg", "Please do not enter empty!");
-
-        } else {
-            dao.updateProfile(fullnamepf, gender, phonepf, addresspf, myAvatar, email);
-            session.setAttribute("account", dao.getUserByEmail(email));
-//            response.getWriter().println("Change profile successfully!");
-            request.setAttribute("msg", "Change profile successfully!");
-
-        }
-        request.setAttribute("msg", "Email or password not correct!");
         request.getRequestDispatcher("Home").forward(request, response);
     }
 

@@ -25,10 +25,10 @@
                 <div class="col-md-3 " style="height:50px; font-size: 25px; text-align: center; " >Total Film In System</div>
             </div>
             <div class="row">
-                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin: 12px; width: 23%;"><i class="fa fa-usd" aria-hidden="true"></i> ${profit}</div>
-                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin: 12px;width: 23%;"><i class="fa fa-ticket" aria-hidden="true"></i> ${numTickets}</div>
-                <div class="btn btn-success" style="height:50px; font-size: 25px;margin: 12px;width: 23%;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> ${numUsers}</div>
-                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin: 12px;width: 23%;"><i class="fa fa-film" aria-hidden="true"></i> ${numfilms}</div>
+                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin: 20px; width: 21%;"><i class="fa fa-usd" aria-hidden="true"></i> ${profit}</div>
+                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin:  20px;width: 21%;"><i class="fa fa-ticket" aria-hidden="true"></i> ${numTickets}</div>
+                <div class="btn btn-success" style="height:50px; font-size: 25px;margin:  20px;width: 21%;"><i class="fa fa-user-circle-o" aria-hidden="true"></i> ${numUsers}</div>
+                <div class=" btn btn-success" style="height:50px; font-size: 25px;margin:  20px;width: 21%;"><i class="fa fa-film" aria-hidden="true"></i> ${numfilms}</div>
             </div>
             <div class="row">
                 <table class="table table-hover">
