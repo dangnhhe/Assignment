@@ -21,6 +21,13 @@ public class Show {
     boolean Status;
     Slot slot;
 
+    public Show(Room room, Films films, Date ShowDate, Slot slot) {
+        this.room = room;
+        this.films = films;
+        this.ShowDate = ShowDate;
+        this.slot = slot;
+    }
+
     public int getId() {
         return id;
     }
@@ -86,5 +93,10 @@ public class Show {
         this.Status = Status;
         this.slot = slot;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Show{" + "id=" + id + ", room=" + room + ", films=" + films + ", ShowDate=" + ShowDate + ", Price=" + Price + ", Status=" + Status + ", slot=" + slot + '}';
+    }
+
 }

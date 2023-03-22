@@ -8,9 +8,11 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import model.BookingTicket;
 import model.Films;
 import model.Genre;
 import model.Room;
+import model.Show;
 import model.Slot;
 import model.User;
 
@@ -139,6 +141,16 @@ public class ManagerDAO extends DBContext {
         }
     }
 
+    public void deleteBooking(String sid) {
+        String sql = "  delete from Bookings where BookingID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, sid);
+            ps.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
     public void addFilm(String genre, String title, String year, String country, String linkImg, String linkTrailer) {
         String trailer = "<iframe width=" + 800 + " height=" + 450 + " src=" + linkTrailer + " title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>";
 
@@ -246,8 +258,40 @@ public class ManagerDAO extends DBContext {
         return list;
     }
 
+    public ArrayList<BookingTicket> getBookingAll() {
+        ArrayList<BookingTicket> blist = new ArrayList<>();
+
+        String sql = "select b.BookingID, u.fullname, u.phone, sh.ShowDate ,s.[Time], r.[Name], b.Amount , f.Title, b.SeatStatus, b.[status],u.[user_id] from Bookings b\n"
+                + "  join [user] u  on b.user_id = u.user_id\n"
+                + "  join Shows sh on sh.ShowID = b.ShowID\n"
+                + "  join Slot s on s.id = sh.SlotId\n"
+                + "  join Rooms r on sh.RoomID = r.RoomID\n"
+                + "  join Films f on sh.FilmID = f.FilmID";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getInt(11), rs.getString(2), rs.getString(3));
+                Films f = new Films(rs.getString(8));
+                Slot s = new Slot(rs.getString(5));
+                Room r = new Room(rs.getString(6));
+                Show sh = new Show(r, f, rs.getDate(4), s);
+                BookingTicket b = new BookingTicket(rs.getInt(1), sh, rs.getString(9), rs.getInt(7), u, rs.getBoolean(10));
+                blist.add(b);
+            }
+            return blist;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
     public static void main(String[] args) {
         ManagerDAO aO = new ManagerDAO();
-        System.out.println(aO.getAllFilmAndId());
+        ArrayList<BookingTicket> blist = aO.getBookingAll();
+        for (BookingTicket bookingTicket : blist) {
+            System.out.println(bookingTicket.getAmount());
+        }
+
     }
 }

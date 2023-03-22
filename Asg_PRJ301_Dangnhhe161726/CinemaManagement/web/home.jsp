@@ -20,13 +20,14 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://i0.wp.com/boingboing.net/wp-content/uploads/2022/07/in-theaters-gentleminions-tiktok-trend-sends-dozens-of-suit-wearing-teenagers-to-see-minions-the-ris.jpeg?fit=1200,600&ssl=1" class="d-block w-100" alt="value">
+                        <img style="height: 600px; width: 100%;" src="https://bloganchoi.com/wp-content/uploads/2023/02/demon-slayer-season-3-release-date.jpg" class="d-block w-100" alt="value">
+
                     </div>
                     <div class="carousel-item ">
-                        <img src="https://i0.wp.com/www.theperiodictableofawesome.com/wp-content/uploads/2016/10/Doctor_Strange.jpg?fit=1200%2C600&ssl=1" class="d-block w-100" alt="value">
+                        <img style="height: 600px; width: 100%;" src="https://i0.wp.com/www.theperiodictableofawesome.com/wp-content/uploads/2016/10/Doctor_Strange.jpg?fit=1200%2C600&ssl=1" class="d-block w-100" alt="value">
                     </div>
                     <div class="carousel-item ">
-                        <img src="https://i0.wp.com/steamgameguides.com/wp-content/uploads/2022/07/thor-love-and-thunder-screen-x-poster-header.jpeg?fit=1200%2C600&ssl=1" class="d-block w-100" alt="value">
+                        <img style="height: 600px; width: 100%;" src="https://i0.wp.com/boingboing.net/wp-content/uploads/2022/07/in-theaters-gentleminions-tiktok-trend-sends-dozens-of-suit-wearing-teenagers-to-see-minions-the-ris.jpeg?fit=1200,600&ssl=1" class="d-block w-100" alt="value">
 
                     </div>
                 </div>

@@ -41,7 +41,7 @@
                                 <td>${u.isGender()?"Male":"Female"}</td>
                                 <td>${u.getPhone()}</td>
                                 <td>${u.getAddress()}</td>
-                                <td><a href="DeleteUser?uid=${u.getUser_id()}" class="btn btn-danger">Delete</a></td>
+                                <td><a onclick="confirmSubmit()" href="DeleteUser?uid=${u.getUser_id()}" class="btn btn-danger">Delete</a></td>
                             </tr>
                         </c:forEach>
 
@@ -50,6 +50,15 @@
 
             </div>
         </div>
+        <script>
+            function  confirmSubmit() {
+                let text = "Do you want to Delete user?";
+                if (confirm(text) == true) {
+                    document.getElementById("form1").submit();
+                } else {
+                }
+            }
 
+        </script>
     </body>
 </html>

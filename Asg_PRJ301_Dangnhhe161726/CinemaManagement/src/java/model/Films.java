@@ -15,6 +15,11 @@ public class Films {
     String CountryCode, img, trailer, Title;
     Genre genre;
 
+    public Films(String Title) {
+        this.Title = Title;
+    }
+
+    
     public Films(int FilmID, int Year, String CountryCode, String img, String trailer, String Title, Genre genre) {
         this.FilmID = FilmID;
         this.Year = Year;
@@ -89,5 +94,11 @@ public class Films {
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
+
+    @Override
+    public String toString() {
+        return "Films{" + "FilmID=" + FilmID + ", Year=" + Year + ", CountryCode=" + CountryCode + ", img=" + img + ", trailer=" + trailer + ", Title=" + Title + ", genre=" + genre + '}';
+    }
+    
 
 }

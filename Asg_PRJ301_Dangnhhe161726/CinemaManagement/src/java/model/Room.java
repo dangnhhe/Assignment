@@ -13,6 +13,12 @@ public class Room {
     int id;
     String Name;
 
+    public Room(String Name) {
+        this.Name = Name;
+    }
+    
+    
+
     public Room(int id, String Name) {
         this.id = id;
         this.Name = Name;
@@ -32,6 +38,11 @@ public class Room {
 
     public void setName(String Name) {
         this.Name = Name;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" + "id=" + id + ", Name=" + Name + '}';
     }
     
 }

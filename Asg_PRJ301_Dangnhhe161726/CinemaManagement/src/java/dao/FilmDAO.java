@@ -214,8 +214,7 @@ public class FilmDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Films f = new Films(rs.getString("img"), rs.getString("Title"));
-                Show show = new Show(rs.getInt(1), new Room(rs.getInt(8), rs.getString(9)), f,
-                        rs.getDate(4), rs.getDouble(5), rs.getBoolean(6), new Slot(rs.getInt(10), rs.getString(11)));
+                Show show = new Show(rs.getInt(1), new Room(rs.getInt(8), rs.getString(9)), f, rs.getDate(4), rs.getDouble(5), rs.getBoolean(6), new Slot(rs.getInt(10), rs.getString(11)));
                 User user = new User();
                 blist.add(new BookingTicket(rs.getInt(12), show, rs.getString(14), rs.getDouble(15), user, rs.getBoolean(17)));
             }

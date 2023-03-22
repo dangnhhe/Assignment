@@ -55,6 +55,12 @@ public class User {
         this.user_id = user_id;
     }
 
+    public User(int user_id, String fullname, String phone) {
+        this.user_id = user_id;
+        this.fullname = fullname;
+        this.phone = phone;
+    }
+
     public User(int user_id, String fullname, String email, String phone, String avatar) {
         this.user_id = user_id;
         this.fullname = fullname;
@@ -72,7 +78,6 @@ public class User {
         this.address = address;
     }
 
-    
     public int getUser_id() {
         return user_id;
     }

@@ -13,6 +13,11 @@ public class Slot {
     int id;
     String time;
 
+    public Slot(String time) {
+        this.time = time;
+    }
+
+    
     public Slot(int id, String time) {
         this.id = id;
         this.time = time;
@@ -32,6 +37,11 @@ public class Slot {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Slot{" + "id=" + id + ", time=" + time + '}';
     }
     
 }

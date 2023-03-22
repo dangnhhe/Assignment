@@ -19,7 +19,7 @@
                 </c:if>
                 <c:if test="${sessionScope.account.getRole()==1}">
                     <a href="ManageShow"  class="btn btn-outline-light me-2">Manager page</a>
-
+                    
                 </c:if>
                 <c:if test="${sessionScope.account!=null}">
                     <a href="MyTickets"  class="btn btn-outline-light me-2">My Tickets</a>

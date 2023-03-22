@@ -15,7 +15,7 @@ public class BookingTicket {
 
     int id;
     Show show;
-    String  seatStatus;
+    String seatStatus;
     double Amount;
     User user;
     boolean status;
@@ -61,7 +61,6 @@ public class BookingTicket {
         this.show = show;
     }
 
-
     public String getSeatStatus() {
         return seatStatus;
     }
@@ -69,7 +68,6 @@ public class BookingTicket {
     public void setSeatStatus(String seatStatus) {
         this.seatStatus = seatStatus;
     }
-
 
     public double getAmount() {
         return Amount;
@@ -85,6 +83,11 @@ public class BookingTicket {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "BookingTicket{" + "id=" + id + ", show=" + show + ", seatStatus=" + seatStatus + ", Amount=" + Amount + ", user=" + user + ", status=" + status + '}';
     }
 
 }

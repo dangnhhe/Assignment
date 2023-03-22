@@ -1,9 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%-- 
-    Document   : newjsp
-    Created on : Jul 27, 2022, 10:41:12 AM
-    Author     : Admin
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -47,10 +43,10 @@
                                 <td><a href="DeleteBooking?bid=${b.id}" class="btn btn-danger">Delete</a></td>
                                 <c:if test="${b.isStatus()}">
                                     <td><a href="Unbooking?bid=${b.id}" class="btn btn-warning">Unbooking</a></td>
-                                    </c:if>
-                                    <c:if test="${!b.isStatus()}">
+                                </c:if>
+                                <c:if test="${!b.isStatus()}">
                                     <td><a class="btn btn-default btn-outline-primary">None</a></td>
-                                    </c:if>
+                                </c:if>
                             </tr>
                         </c:forEach>
 
